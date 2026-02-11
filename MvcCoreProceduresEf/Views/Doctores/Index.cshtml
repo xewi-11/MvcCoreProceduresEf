@@ -1,0 +1,57 @@
+﻿@model List<string>
+
+    @{
+    ViewData["Title"] = "Index";
+    List<Doctor> doctores = new List<Doctor>();
+    doctores = ViewData["DOCTORES"] as List<Doctor>;
+}
+
+<h1>Doctores</h1>
+<form method="post">
+    <label>Actualizar con linq</label>
+    
+    <select name="especialidad">
+    @foreach (var especialidad in Model)
+    {
+        <option value="@especialidad">@especialidad</option>
+    }
+  </select>
+  <button value="3" name="updateOp" type="submit">Buscar</button>
+  <label>Incremento Salario</label>
+  <input type="number" name="incremento" />
+  <button value="0" name="updateOp" type="submit">Actualizar con Raw procedure</button>
+    <button value="1" name="updateOp" type="submit">Actualizar con Ef(Linq)</button>
+</form>
+<h3 style="color:red">@ViewData["Metodo"]</h3>
+@if (doctores != null)
+{
+     
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id DOCTOR</th>
+                <th>Apellido</th>
+                <th>Especialidad</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in doctores) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOCTOR_NO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.APELLIDO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ESPECIALIDAD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SALARIO)
+            </td>
+        </tr>
+    }
+        </tbody>
+    </table>
+}
