@@ -73,7 +73,11 @@ namespace MvcCoreProceduresEf.Repositories
         }
         public async Task UpdateDoctorLinq(string especialidad, int incremento)
         {
-            List<Doctor> doctores = await this.GetAllDctoresEspecialidad(especialidad);
+            var consulta = from datos in this.context.Doctores
+                           where datos.ESPECIALIDAD == especialidad
+                           select datos;
+            List<Doctor> doctores = await consulta.ToListAsync();
+            // List<Doctor> doctores = await this.GetAllDctoresEspecialidad(especialidad);
             if (doctores != null)
             {
                 foreach (Doctor doc in doctores)
