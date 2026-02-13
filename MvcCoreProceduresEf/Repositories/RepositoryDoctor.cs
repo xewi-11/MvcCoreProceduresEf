@@ -29,9 +29,9 @@ namespace MvcCoreProceduresEf.Repositories
     #endregion
     public class RepositoryDoctor
     {
-        private EnfermosContext context;
+        private HospitalContext context;
 
-        public RepositoryDoctor(EnfermosContext context)
+        public RepositoryDoctor(HospitalContext context)
         {
             this.context = context;
 

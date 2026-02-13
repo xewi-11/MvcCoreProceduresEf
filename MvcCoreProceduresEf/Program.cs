@@ -9,7 +9,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<RepositoryEnfermos>();
 builder.Services.AddTransient<RepositoryDoctor>();
-builder.Services.AddDbContext<EnfermosContext>(options =>
+builder.Services.AddTransient<RepositoryEmpleados>();
+builder.Services.AddTransient<RepositoryTrabjadores>();
+builder.Services.AddDbContext<HospitalContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlHospital")));
 
 var app = builder.Build();
